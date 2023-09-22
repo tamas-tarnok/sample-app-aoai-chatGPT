@@ -2,16 +2,19 @@ import { UserInfo, ConversationRequest, Conversation, ChatMessage, CosmosDBHealt
 import { chatHistorySampleData } from "../constants/chatHistory";
 
 export async function conversationApi(options: ConversationRequest, abortSignal: AbortSignal): Promise<Response> {
+    const body = JSON.stringify({
+        messages: options.messages
+    });
     const response = await fetch("/conversation", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            messages: options.messages
-        }),
+        body: body,
         signal: abortSignal
     });
+
+    console.log('conversationApi', body);
 
     return response;
 }
