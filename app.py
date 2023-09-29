@@ -117,8 +117,8 @@ def fetchUserGroups(userToken, nextLink=None):
         'Authorization': "bearer " + userToken
     }
     try :
-        logging.error("Endpoint: " + endpoint)
-        logging.error("Headers: " + headers)
+        logging.exception("Endpoint: " + endpoint)
+        logging.exception("Headers: " + headers)
         r = requests.get(endpoint, headers=headers)
         if r.status_code != 200:
             return []
@@ -140,7 +140,7 @@ def generateFilterString(userToken):
     # Construct filter string
     if userGroups:
         group_ids = ", ".join([obj['id'] for obj in userGroups])
-        logging.error("User Groups: " + group_ids)
+        logging.exception("User Groups: " + group_ids)
         return f"{AZURE_SEARCH_PERMITTED_GROUPS_COLUMN}/any(g:search.in(g, '{group_ids}'))"
     
     return None
