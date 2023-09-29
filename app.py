@@ -193,7 +193,7 @@ def prepare_body_headers_with_data(request):
                     "roleInformation": AZURE_OPENAI_SYSTEM_MESSAGE,
                     "embeddingEndpoint": AZURE_OPENAI_EMBEDDING_ENDPOINT,
                     "embeddingKey": AZURE_OPENAI_EMBEDDING_KEY,
-                    "filter": filter,
+                    #"filter": filter,
                     "strictness": int(AZURE_SEARCH_STRICTNESS)
                 }
             }
