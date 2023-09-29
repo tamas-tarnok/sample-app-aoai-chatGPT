@@ -137,6 +137,7 @@ def generateFilterString(userToken):
     # Construct filter string
     if userGroups:
         group_ids = ", ".join([obj['id'] for obj in userGroups])
+        logging.exception("User Groups: " + group_ids)
         return f"{AZURE_SEARCH_PERMITTED_GROUPS_COLUMN}/any(g:search.in(g, '{group_ids}'))"
     
     return None
