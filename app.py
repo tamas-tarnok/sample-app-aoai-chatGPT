@@ -116,9 +116,11 @@ def fetchUserGroups(userToken, nextLink=None):
     headers = {
         'Authorization': "bearer " + userToken
     }
+    
+    logging.warning("User token: " + userToken)
+    
     try :
         logging.exception("Endpoint: " + endpoint)
-        logging.exception("Headers: " + ', '.join(f'{key}: {value}' for key, value in headers.items()))
         r = requests.get(endpoint, headers=headers)
         if r.status_code != 200:
             return []
