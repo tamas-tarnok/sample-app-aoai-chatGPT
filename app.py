@@ -118,7 +118,7 @@ def fetchUserGroups(userToken, nextLink=None):
     }
     try :
         logging.exception("Endpoint: " + endpoint)
-        logging.exception("Headers: " + ", ".join([obj for obj in headers]))
+        logging.exception("Headers: " + ", ".join([obj for obj in headers.items()]))
         r = requests.get(endpoint, headers=headers)
         if r.status_code != 200:
             return []
